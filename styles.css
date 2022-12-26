@@ -47,3 +47,14 @@ body{
 .left-line{
     border-left: solid rgba(58,43,18,0.5) 1px;
 }
+.icon {
+    vertical-align: middle;
+    font-size: 40px;
+}
+.container2 {
+    border: 1px solid #666;
+    border-radius: 6px;
+    display: block;
+    margin: 40px;
+    padding: 10px;
+}

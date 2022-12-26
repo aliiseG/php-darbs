@@ -19,7 +19,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark mt-2" style="background-color: #18130F; color:#FFFAEE">
     <div class="container-fluid">
         <a class="navbar-brand m-lg- mx-sm-3" href="#">
-        <img src="brand_logo.png" class="logo" alt="Logo" width="35" height="24" class="d-inline-block align-text-top">
+        <img src="brand_logo.png" class="brandlogo" alt="Logo" width="35" height="24" class="d-inline-block align-text-top">
             <div class="d-inline-block align-text-top">Culinary <br> school</div></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -41,25 +41,51 @@
                 <li class="nav-item mx-3 px-3">
                     <a class="nav-link" href="#">Contacts</a>
                 </li>
-                <button class="btn btn-primary2 px-5" type="log-in-link">Log-in</button>
+                <button class="btn btn-primary2 px-5" type="loginlink">Log-in</button>
             </ul>
         </div>
     </div>
 </nav>
 <!--Main body dala ar divam kolonnam-->
-<div class = "container-fluid border mt-4">
+<div class = "container-fluid  mt-4 mb-0">
     <div class="row justify-content-center">
 <!--        pirma kolonna-->
-        <div class="col-md text-center fs-1 fw-bold">The culinary arts,<br> reinvented
+        <div class="col-md text-center fs-1 fw-bold"><h1 class="fw-bold mb-5 display-3">The culinary arts,<br> reinvented</h1>
 <!--            vertikala "tabula" ieks pirmas kolonnas-->
-            <div class = "container border mt-4">
-                <div class="col fs-1 fw-bold ">
-                    <i class="fa-solid fa-thumbs-up fa-2xl fa-pull-left" style="--fa-pull-margin: 10px 50px 20px 0;" alt="thumbs-up"></i>
-                    <a class="navbar-brand m-lg- mx-sm-3" href="#">
-                        <div class="d-inline-block align-text-top">Culinary <br> school</div></a>
+            <div class = "container mt-5">
+                <div class="row justify-content-md-center my-5">
+                <div class="col-lg-5 fw-bold">
+                    <div class="row">
+                        <div class="col-md-1">
+                    <i class="fa-solid fa-thumbs-up fa-2xl"  style="vertical-align:middle; margin-top: 20px; margin-left: 20px; color:#3A2B1E;" alt="thumbs-up"></i>
+                        </div>
+                        <div class="col-md-11"><p style="color:#BD5007; margin:2px 2px 2px 2px">100%</p><p class = "mt-0" style="color:#18130F; font-size: medium;">Satisfaction</p></div>
+                    </div>
                 </div>
-                <div class="col text-center fs-1 fw-bold">The culinary arts,<br> reinvented</div>
-                <div class="col text-center fs-1 fw-bold">The culinary arts,<br> reinvented</div>
+
+                </div>
+                <div class="row justify-content-md-center my-5">
+                    <div class="col-lg-5 fw-bold ">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <i class="fa-solid fa-user fa-2xl"  style="vertical-align:middle; margin-top: 60px; margin-left: 20px; color:#3A2B1E;" alt="thumbs-up"></i>
+                            </div>
+                            <div class="col-md-11"><p style="color:#BD5007; margin:2px 2px 2px 2px">&nbsp;&nbsp;2.5K+</p><p class = "mt-0" style="color:#18130F; font-size: medium; ">Successful&nbsp;&nbsp;&nbsp;<br>&nbsp;graduates&nbsp;&nbsp;&nbsp;&nbsp;</p></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row justify-content-md-center my-5">
+                    <div class="col-lg-5 fw-bold ">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <i class="fa-solid fa-trophy fa-2xl"  style="vertical-align:middle; margin-top: 30px; margin-left: 10px; color:#3A2B1E;" alt="thumbs-up"></i>
+                            </div>
+                            <div class="col-md-11"><p style="color:#BD5007; margin:2px 2px 2px 2px">50+&nbsp;&nbsp;</p><p class = "mt-0" style="color:#18130F; font-size: medium;">&nbsp;&nbsp;&nbsp;&nbsp;Awards&nbsp;won&nbsp;&nbsp;&nbsp;&nbsp;</p></div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
 <!--        otra kolonna-->
@@ -88,7 +114,7 @@
                             aria-label="Slide 3"
                     ></button>
                 </div>
-                <div class="carousel-inner">
+                <div class="carousel-inner mb-5">
                     <div class="carousel-item active">
                         <img src="kitchen-empty.jpeg" class="d-block w-100" alt="Wild Landscape"/>
                     </div>
@@ -111,6 +137,46 @@
         </div>
 
     </div>
+<div class = "row justify-content-center">
+<div class="col-8 text-center fs-1 border border-secondary rounded m-auto" style="background-color: #BD5007; color:#FFFAEE; z-index: 2;">
+    <p class = "my-5">FILL OUT OUR FORM TO APPLY NOW!</p>
+    <a href="#">
+        <img src="brand_logo.png" class="logo mb-5" alt="form-logo" width="230" height="150" class="d-inline-block align-text-top">
+    </a>
+</div>
+    <div class="col-12 text-center fs-1" style="margin-top:-150px; height:200px;background-color:#C8A98D; z-index: auto  ">
+        ejhrkujh
+    </div>
+    <div class="mb-0" style="background-color:#C8A98D; ">
+        <div class="container" >
+            <div class="col-9 m-auto border-top border-dark" style="--bs-border-opacity: .2;">
+                <div class="row">
+                    <div class="col-sm " style="color:#FFF9EE">
+                        <p class="mb-2 mt-4 fs-5">KONTAKTI</p>
+                        <p class="my-1">Iela Rīgā 31, Rīga, LV-1010</p>
+                        <p class="my-1">22332222</p>
+                        <p class="my-1">skola@skola.lv</p>
+                        <p class="copyright">
+                            <small>&copy; 2019</small>
+                        </p>
+                    </div>
+                    <div class="col-sm ">
+
+                    </div>
+                    <div class="col-sm ">
+                        <i class="fa-solid fa-utensils fa-rotate-by fa-10x fa-pull-right mt-2 mb-0" style="--fa-rotate-angle: -45deg; color:#3A2B1E; opacity: 0.3;"></i>
+                    </div>
+                    <div class="col-md-3  d-flex align-items-center justify-content-end">
+                        <a class="btn " href="#"><i class="fa-brands fa-facebook fa-3x" style="color:#FFFFEF"></i></a>
+                        <a class="btn " href="#"><i class="fa-brands fa-instagram fa-3x" style="color:#FFFFEF"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 </div>
 
 </body>
