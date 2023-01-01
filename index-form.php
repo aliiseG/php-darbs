@@ -129,123 +129,10 @@
 <!--Footer/formas dala-->
 <div class="row justify-content-center">
     <div class="col-8  border-bottom border-right border-secondary rounded m-auto " id="anchor-form" style="background-color: #BD5007; color:#FFFAEE; z-index: 2;">
-        <p class="mt-5 fs-2 text-center ">AIZPILDIET ANKETU, LAI PIETEIKTOS MĀCĪBĀM!</p>
-        <button type="button" class="btn d-block mx-auto mb-3" data-bs-toggle="collapse" data-bs-target="#applyform"><img src="brand_logo.png" class="brandlogo" alt="Logo" width="35" height="24" class="d-inline-block align-text-top"></button>
-        <div id="applyform" class="collapse">
-            <form action="enroll_data_insert.php" method="post" id="basicform">
-                <div class="form-group frm" id="firstpartform">
-                    <div class="row justify-content-center">
-                        <div class="col-3 mr-0 my-2">
-                            <label>Vārds</label>
-                            <input type="text" id="vards" class="form-control" placeholder="Vārds" name="name" required>
-                        </div>
-                        <div class="col-3 ml-0 my-2">
-                            <label>Uzvārds</label>
-                            <input type="text" id="uzvards" class="form-control" placeholder="Uzvārds" name="surname" required>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center">
-                        <div class="col-3 mr-0 my-2">
-                            <label>Personas kods</label>
-                            <input type="text" id="perskods" class="form-control" placeholder="Personas kods" name="pk" required>
-                        </div>
-                        <div class="col-3 ml-0 my-2">
-                            <label>Pases/ID numurs</label>
-                            <input type="text" id="pasesnr" class="form-control" placeholder="Pases/ID numurs" name="pasesnr" required>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center">
-                        <div class="col-3 mr-0 my-2">
-                            <label>Pases izdošanas datums</label>
-                            <input type="date" id="izddatums" class="form-control" name="pasesdate" required>
-                        </div>
-                        <div class="col-3 ml-0 my-2">
-                            <label>Pases izdošanas nodaļa</label>
-                            <input type="text" id="izdnodala" class="form-control" placeholder="Pases izdošanas nodaļa" name="nodala" required>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center">
-                        <div class="col-6 mr-0 my-2">
-                            <label>Deklarētā adrese</label>
-                            <input type="text" id="adrese" class="form-control" placeholder="Deklarētā adrese" name="address" required>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center">
-                        <div class="col-3 ml-0 my-2">
-                            <label>Specialitāte</label>
-                            <select id="spec" name="spec" class="form-select" required>
-                                <option value="" disabled selected hidden>Specialitāte</option>
-                                <option value="pavars">Pavārs</option>
-                                <option value="konditors">Konditors</option>
-                            </select>
-                        </div>
-                        <div class="col-3 ml-0 my-2">
-                            <label>Maksas veids</label>
-                            <select id="maksa" name="maksa" class="form-select" required>
-                                <option value="" disabled selected hidden>Daļas - summa</option>
-                                <option value="1part">1 daļa - 1000</option>
-                                <option value="2part">2 daļas - 1200</option>
-                                <option value="3part">3 daļas - 1400</option>
-                            </select>
-                        </div>
-
-                    </div>
-                    <div class="row justify-content-center">
-                        <div class="col-3 ml-0 mt-2 mb-4">
-                            <label>Tel.numurs</label>
-                            <input type="text" id="telefons" class="form-control" placeholder="Tel.numurs" name="telefons" required>
-                        </div>
-                        <div class="col-3 ml-0 mt-2 mb-4">
-                            <label>E-pasts</label>
-                            <input type="email" id="epasts" class="form-control" placeholder="E-pasts" name="epasts" required>
-                        </div>
-
-                    </div>
-                    <div class="row justify-content-center">
-                        <div class="col-auto my-3 m-auto">
-                            <button type="button" class="btn btn-primary2 mb-3 px-5 open1" id="btn-secondary2">Tālāk</button>
-                        </div>
-                    </div>
-                </div>
-                    <!--            otra dala ar kalendaru-->
-                    <div class="form-group frm" id="sf3" style="display: none;">
-                        <div class="row justify-content-center">
-                            <div class="col-5 mr-0 my-2">
-                                <?php
-                                include("db_connect.php");
-                                include("pick_meeting.php");
-                                ?>
-                                <select id="meetdate" name="meetdate" class="form-select" required>
-                                    <option value="" disabled selected hidden style="text-align-last:left; !important">Datums</option>
-                                    <?php
-                                    foreach ($options as $option) {
-                                        ?>
-                                        <option value="<?php echo $option['date']; ?>,<?php echo $option['time']; ?>"><?php echo $option['date']; ?>&#160;&#160;&#160;&#160;-&#160;&#160;&#160;&#160;<?php echo $option['time']; ?></option>
-                                        <?php
-                                    }
-                                    ?>
-                                </select>
-                                <div class="row justify-content-center">
-                                    <div class="col-auto my-3 m-auto">
-                                        <button type="button" class="btn btn-primary mb-3 px-5 back3">Atpakaļ</button>
-                                    </div>
-                                    <div class="col-auto my-3 m-auto">
-                                        <button class="btn btn-primary mb-3 px-5 open3" type="submit">Iesniegt</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                <div class="form-group frm p-3" id="sf3" style="display: none;">
-                    <div class="row justify-content-center">
-                        <p>Esat veiksmīgi pieteicies mācībām uz nākamo mācību gadu! Gaidīsim Jūs norunātajā laikā, lai pabeigtu uzņemšanas procesu.</p>
-
-                    </div>
-
-                </div>
-            </form>
+        <p class="mt-5 fs-2 text-center ">PALDIES PAR PIETEIKUMU!</p>
+        <button type="button" class="btn d-block mx-auto mb-3" data-bs-toggle="collapse" data-bs-target="#applyform" disabled><img src="brand_logo.png" class="brandlogo" alt="Logo" width="35" height="24" class="d-inline-block align-text-top"></button>
+        <div id="applyform" class="col-12 p-4 m-auto">
+            <p class="fs-3 p-2 m-auto text-center">Esat veiksmīgi pieteicies mācībām uz nākamo mācību gadu! Gaidīsim Jūs izvēlētajā laikā, lai pabeigtu uzņemšanas procesu.</p>
         </div>
     </div>
 </div>
@@ -296,6 +183,12 @@
                             required: true,
                         },
                         maksa: {
+                            required: true,
+                        }
+                        telefons: {
+                            required: true,
+                        }
+                        epasts: {
                             required: true,
                         }
                     },
