@@ -26,19 +26,19 @@ body{
     --bs-btn-active-bg: #{shade-color($bd-violet, 20%)};
     --bs-btn-active-border-color: #{shade-color($bd-violet, 20%)};
 }
-.btn-primary3{
+.btn-bd-primary {
     --bs-btn-font-weight: 600;
-    --bs-btn-color: #8064A2 !important;
-    --bs-btn-bg: #3A2B1E;
-    --bs-btn-border-color: #3A2B1E;
-    --bs-btn-border-radius: .2rem;
-    --bs-btn-hover-color: var(--bs-white);
-    --bs-btn-hover-bg: #BD5007;
-    --bs-btn-hover-border-color: #3A2B1E;
-    /*--bs-btn-focus-shadow-rgb: #CD6409;*/
+    --bs-btn-color: var(--bs-white);
+    --bs-btn-bg: #BD5007;
+    --bs-btn-border-color: #BD5007;
+    --bs-btn-border-radius: .5rem;
+    --bs-btn-hover-color: white;
+    --bs-btn-hover-bg: #9F4204;
+    --bs-btn-hover-border-color: #9F4204;
+    --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
     --bs-btn-active-color: var(--bs-btn-hover-color);
-    --bs-btn-active-bg: #a35826;
-    --bs-btn-active-border-color: #a35826;
+    --bs-btn-active-bg: #{shade-color($bd-violet, 20%)};
+    --bs-btn-active-border-color: #{shade-color($bd-violet, 20%)};
 }
 [id*="btn-secondary2"]{
     --bs-btn-color: #fff;

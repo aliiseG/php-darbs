@@ -226,60 +226,7 @@
 
             });
         </script>
-<!--        --><?php
 
-//        $con = mysqli_connect('localhost', 'root');
-//        if($con){
-////        echo "Connection Successful";
-//        }
-//        else{
-//            echo "Connection Failed BOOOO";
-//        }
-//        mysqli_select_db($con, 'culinaryschool');
-//        if(isset($_POST['submit'])) {
-//            $name = $_POST['name'];
-//            $surname = $_POST['surname'];
-//            $pk = $_POST['pk'];
-//            $pasesnr = $_POST['pasesnr'];
-//            $pasesdate = $_POST['pasesdate'];
-//            $nodala= $_POST['nodala'];
-//            $address = $_POST['address'];
-//            $spec = $_POST['spec'];
-//            $maksa = $_POST['maksa'];
-//            $tiksanas_dati = $_POST['meetdate'];
-//
-//            $arr=explode(",", $tiksanas_dati);
-//
-//            $query = "INSERT INTO applicants ( Vards, Uzvards, Pers_kods, Pases_ID_nr, Izd_datums, Izd_nodala, Dekl_adrese, Specialitate, Maksa, Meet_datums, Meet_laiks) VALUES ('$name', '$surname', '$pk', '$pasesnr', '$pasesdate', '$nodala', '$address', '$spec', '$maksa', '$arr[0]', '$arr[1]')";
-//            mysqli_query($con, $query);
-//            header('location:index.php');
-//        }
-
-//            if($image_type=="image/jpeg" or $image_type=="image/png" or
-//                $image_type=="image/gif"){
-//
-//                if($image_size<=500000){
-//                    move_uploaded_file($image_tmp,"images/$image_name");
-//                }
-//                else{
-//                    echo "<script>alert('Image size is larger, only 50kb size is allowed ')</script>";
-//                }
-//
-//
-//            }
-//            else{
-//                echo "<script>alert('Image type is invalid')</script>";
-//            }
-//
-//            $query= "insert into post(name,user_name,mobile,dob,email,password,confirm_password,image)
-//			values('$name','$user_name','$mobile','$dob','$email','$pass','$c_pass','$image_name')";
-//
-//            if(mysql_query($query)){
-//
-//                echo "<h1 class='center'>Done</h1>";
-//
-//            }}
-        ?>
     </div>
 </div>
     <div class="col-12 text-center fs-4" style="margin-top:-100px; height:200px;background-color:#C8A98D; z-index: auto  ">
