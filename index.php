@@ -46,7 +46,7 @@
                 <li class="nav-item mx-3 px-3">
                     <a class="nav-link" href="#">Kontakti</a>
                 </li>
-                <button class="btn btn-primary2 px-5" type="loginlink">Autorizācija</button>
+                <a class="btn btn-primary2 px-5" type="button" href="login.php">Autorizācija</a>
             </ul>
         </div>
     </div>
@@ -128,7 +128,7 @@
     </div>
 <!--Footer/formas dala-->
 <div class="row justify-content-center">
-    <div class="col-8  border-bottom border-right border-secondary rounded m-auto " id="anchor-form" style="background-color: #BD5007; color:#FFFAEE; z-index: 2;">
+    <div class="col-8  border-bottom border-right border-secondary rounded m-auto shadow" id="anchor-form" style="background-color: #BD5007; color:#FFFAEE; z-index: 2;">
         <p class="mt-5 fs-2 text-center ">AIZPILDIET ANKETU, LAI PIETEIKTOS MĀCĪBĀM!</p>
         <button type="button" class="btn d-block mx-auto mb-3" data-bs-toggle="collapse" data-bs-target="#applyform"><img src="brand_logo.png" class="brandlogo" alt="Logo" width="35" height="24" class="d-inline-block align-text-top"></button>
         <div id="applyform" class="collapse">
