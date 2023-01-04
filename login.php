@@ -23,35 +23,13 @@
 <?php
 session_start();
 include('db_connect.php');
-//if(isset($_POST['submit'])) {
-//    $epasts = mysqli_real_escape_string($con,$_POST['epasts']);
-//    $password = mysqli_real_escape_string($con, $_POST['password']);
-//    $query = "SELECT * FROM users WHERE epasts= '$epasts' and parole = '$password'";
-//    $result = mysqli_query($con, $query);
-//    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-////    $active = $row['active'];
-//
-//    $count = mysqli_num_rows($result);
-//
-//    // If result matched $myusername and $mypassword, table row must be 1 row
-//
-//    if($count == 1) {
-////        session_register("epasts");
-//        echo "<h1>Login successful</h1>";
-//        $_SESSION['login_user'] = $epasts;
-//        header("location: index.php");
-////        header("location: welcome.php");
-//    }else {
-//        echo "<h1>Login successful</h1>";
-//        $error = "Your Login Name or Password is invalid";
-//    }
-//}
+
+
 if (isset($_POST['epasts']) && isset($_POST['password'])){
 
     function validate ($data){
         $data = trim($data);
         $data = stripslashes($data);
-//        $data - htmlspecialchars($data);
         return $data;
     }
     $epasts = validate($_POST['epasts']);
@@ -67,13 +45,19 @@ if (isset($_POST['epasts']) && isset($_POST['password'])){
         $query = "SELECT * FROM users WHERE Epasts= '$epasts' and Parole = '$password'";
         $result = mysqli_query($con, $query);
         if (mysqli_num_rows($result)){
+            $row = mysqli_fetch_array($result);
+            if($row['Tips'] == 'student'){
+                $_SESSION['user_email'] = $row['Epasts'];
+                header('location:user_profile.php');
+
+            }
             echo "yo";
-        }else echo "naur";
+        }$error='Nepareiza parole vai e-pasts!';
     }
 
 }else{
-    header("Location: index.php");
-    exit();
+//    header("Location: index.php");
+//    exit();
 }
 ?>
     <div class="container py-5 h-100">
@@ -88,8 +72,16 @@ if (isset($_POST['epasts']) && isset($_POST['password'])){
                             </div>
                             <h2 class="fw-bold mb-2 text-uppercase">Pieslēgties</h2>
                             <p class="text-white-50 mb-4">Lūdzu ievadiet savu e-pastu un paroli!</p>
+                            <?php
+                            if (isset($error)){
+                                echo '<div class="mb-3">
+                                       <span class="block p-1 bg-danger form-control text-white" style="border-radius: 5px;">'.$error.'</span>
+                                </div>';
+                                unset($error);
+                            }
+                            ?>
 
-                            <div class="form-outline form-white mb-4">
+                            <div class="form-outline form-white mb-4 mt-1">
                                 <label class="form-label" for="epasts">E-pasts</label>
                                 <input type="email" id="epasts" class="form-control form-control-lg" name="epasts" required>
 
@@ -108,7 +100,7 @@ if (isset($_POST['epasts']) && isset($_POST['password'])){
                         </div>
 
                         <div>
-                            <p class="mb-0">Don't have an account? <a href="#!" class="text-white-50 fw-bold">Sign Up</a>
+                            <p class="mb-0"><a href="index.php" class="text-white-50 fw-bold">Atgriezties uz sākumu</a>
                             </p>
                         </div>
                         </form>
