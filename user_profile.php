@@ -1,7 +1,12 @@
 <?php
 session_start();
 include('db_connect.php');
-include('select_user_data.php');
+if(isset($_SESSION['user_role'])){
+    if($_SESSION['user_role']=='student'){
+        include('select_student_data.php');
+    }else{
+        include('select_user_data.php');}
+}
 if(!isset($_SESSION['user_email'])){
     header('location:login.php');
 }
@@ -55,12 +60,19 @@ if(!isset($_SESSION['user_email'])){
         <ul class="nav navbar-nav justify-content-center">
             <li class="nav-item mx-5"><a class="nav-link" href="#">STUNDU&nbsp;SARAKSTI</a></li>
             <li class="nav-item mx-5">
-                <a class="nav-link" href="#">PAZIŅOJUMI</a>
+                <a class="nav-link" href="forum.php">PAZIŅOJUMI</a>
             </li>
+            <?php
+            if ($_SESSION['user_role']=='admin'){
+                echo '<li class="nav-item mx-5">
+                <a class="nav-link" href="#">PIETEIKUMI</a>
+            </li>';
+            }?>
         </ul>
     </div>
 </nav>
-<div class="container py-5 h-100">
+<!--profila kartina-->
+<div class="container py-5 h-100 ">
     <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col col-lg-6 mb-4 mb-lg-0">
             <div class="card mb-3 shadow" style="border-radius: .5rem; background-color: #EDE0D0;">
@@ -68,15 +80,15 @@ if(!isset($_SESSION['user_email'])){
                     <div class="col-md-4 text-center "
                          style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
                         <img src="<?php echo($row['Tips']);?>.png"
-                             alt="Avatar" class="img-fluid my-5 mx-2" style="width: 300px; background-color: floralwhite; border-radius: 20px" />
-                        <h5>Jānis Pavārs</h5>
+                             alt="Avatar" class="img-fluid mt-5 mb-3 mx-2" style="width: 300px; background-color: floralwhite; border-radius: 20px" />
+                        <h5><?php echo $row['Vards']." ".$row['Uzvards'];?></h5>
                         <p><?php
-                            if ($row['Tips']='student'){
-                                echo 'Students';
-                            }elseif ($row['Tips']='admin'){
+                            if ($row['Tips']=='admin'){
                                 echo 'Administrators';
-                            }elseif ($row['Tips']='teacher'){
+                            }elseif ($row['Tips']=='teacher'){
                                 echo 'Pasniedzējs';
+                            }elseif ($row['Tips']=='student'){
+                                echo 'Students';
                             }
                             ?></p>
                         <a href="logout.php" style="color:black">
@@ -88,17 +100,17 @@ if(!isset($_SESSION['user_email'])){
                             <hr class="mt-0 mb-4">
                             <div class="row pt-1">
                                 <div class="col-6 mb-3">
-                                    <h6>Kvalifikācija</h6>
+                                    <h6>Programma</h6>
                                     <p class="text-muted">
-                                        <?php
-                                        echo $row['Kvalifikacija'];
-                                        ?></p>
+                                        <?php if(isset($row['Kvalifikacija'])){
+                                            echo $row['Kvalifikacija'];
+                                        }else {echo '-';} ?></p>
                                 </div>
                                 <div class="col-6 mb-3">
                                     <h6>Grupa</h6>
-                                    <p class="text-muted"><?php
-                                        echo $row['Nosaukums'];
-                                        ?></p>
+                                    <p class="text-muted"><?php if(isset($row['Nosaukums'])){
+                                            echo $row['Nosaukums'];
+                                        }else {echo '-';} ?></p>
                                 </div>
                             </div>
                             <h6>Dati</h6>

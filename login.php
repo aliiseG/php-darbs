@@ -22,6 +22,9 @@
 <body>
 <?php
 session_start();
+if(isset($_SESSION['user_email'])){
+    unset($_SESSION['user_email']);
+}
 include('db_connect.php');
 
 
@@ -48,8 +51,17 @@ if (isset($_POST['epasts']) && isset($_POST['password'])){
             $row = mysqli_fetch_array($result);
             if($row['Tips'] == 'student'){
                 $_SESSION['user_email'] = $row['Epasts'];
+                $_SESSION['user_role'] = $row['Tips'];
                 header('location:user_profile.php');
 
+            } elseif($row['Tips'] == 'teacher'){
+                $_SESSION['user_email'] = $row['Epasts'];
+                $_SESSION['user_role'] = $row['Tips'];
+                header('location:user_profile.php');
+            }elseif($row['Tips'] == 'admin'){
+                $_SESSION['user_email'] = $row['Epasts'];
+                $_SESSION['user_role'] = $row['Tips'];
+                header('location:user_profile.php');
             }
             echo "yo";
         }$error='Nepareiza parole vai e-pasts!';
@@ -69,6 +81,7 @@ if (isset($_POST['epasts']) && isset($_POST['password'])){
                         <div class="mb-md-5 mt-md-4 pb-5">
                             <div class="mt-1 mb-3 mx">
                                 <img src="brand_logo.png" class="brandlogo" alt="Logo" width="65" height="45" class="d-block">
+
                             </div>
                             <h2 class="fw-bold mb-2 text-uppercase">Pieslēgties</h2>
                             <p class="text-white-50 mb-4">Lūdzu ievadiet savu e-pastu un paroli!</p>
@@ -90,11 +103,7 @@ if (isset($_POST['epasts']) && isset($_POST['password'])){
                             <div class="form-outline form-white mb-4">
                                 <label class="form-label" for="password">Parole</label>
                                 <input type="password" id="password" class="form-control form-control-lg"  name="password" required>
-
                             </div>
-
-<!--                            <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Aizmirsāt paroli?</a></p>-->
-
                             <button class="btn btn-outline-light btn-lg px-5" type="submit" name="login">Login</button>
 
                         </div>

@@ -1,3 +1,11 @@
+<?php
+session_start();
+include('db_connect.php');
+include('select_user_data.php');
+if(!isset($_SESSION['user_email'])){
+    header('location:login.php');
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -25,15 +33,19 @@
     <div class="container justify-content-center">
         <ul class="nav navbar-nav w-100 flex-nowrap">
             <li class="nav-item active">
-                <a class="nav-link" href="#">PROFILS</a>
+                <a class="nav-link" href="user_profile.php">PROFILS</a>
             </li>
         </ul>
         <ul class="nav navbar-nav justify-content-center">
-            <li class="nav-item"><a class="nav-link fs-5" href="#">SVEIKI,&nbsp;STUDENT!</a></li>
+            <li class="nav-item"><a class="nav-link disabled fs-5"  href="#" style="color:floralwhite; text-transform:uppercase;">Sveiki,&nbsp;<?php echo $row['Vards'];?>!</a></li>
         </ul>
         <ul class="nav navbar-nav w-100 justify-content-end">
             <li class="nav-item">
-                <a class="nav-link" href="#">3.janvāris,&nbsp;2023.gads</a>
+                <a class="nav-link disabled"  href="#" style="color:floralwhite">
+                    <?php
+                    setlocale(LC_ALL, 'lv-LV');
+                    echo strftime( "%#d. %b, %Y. gads");
+                    ?></a>
             </li>
         </ul>
     </div>
@@ -48,76 +60,73 @@
         </ul>
     </div>
 </nav>
-    <div class="container py-5 h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col col-md-9 col-lg-7 col-xl-5">
-                <div class="card shadow" style="border-radius: 15px;background-color: #EDE0d0; border-style: none">
-                    <div class="card-body p-4">
-                        <div class="d-flex text-black">
-                            <div class="flex-shrink-0">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
-                                     alt="Generic placeholder image" class="img-fluid"
-                                     style="width: 180px; border-radius: 10px;">
-                            </div>
-<!--                            <div class="row">-->
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0 ml-2">Full Name</p>
+<div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-lg-6 mb-4 mb-lg-0">
+            <div class="card mb-3 shadow" style="border-radius: .5rem; background-color: #EDE0D0;">
+                <div class="row g-0">
+                    <div class="col-md-4 text-center "
+                         style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                        <img src="<?php echo($row['Tips']);?>.png"
+                             alt="Avatar" class="img-fluid my-5 mx-2" style="width: 300px; background-color: floralwhite; border-radius: 20px" />
+                        <h5><?php echo $row['Vards']." ".$row['Uzvards'];?></h5>
+                        <p><?php
+                            if ($row['Tips']='student'){
+                                echo 'Students';
+                            }elseif ($row['Tips']='admin'){
+                                echo 'Administrators';
+                            }elseif ($row['Tips']='teacher'){
+                                echo 'Pasniedzējs';
+                            }
+                            ?></p>
+                        <a href="logout.php" style="color:black">
+                            <i class="fa-solid fa-right-from-bracket mb-3" alt="logout""></i></a>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body p-4">
+                            <h6>Profils</h6>
+                            <hr class="mt-0 mb-4">
+                            <div class="row pt-1">
+                                <div class="col-6 mb-3">
+                                    <h6>Kvalifikācija</h6>
+                                    <p class="text-muted">
+                                        <?php
+                                        echo $row['Kvalifikacija'];
+                                        ?></p>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <h6>Grupa</h6>
+                                    <p class="text-muted"><?php
+                                        echo $row['Nosaukums'];
+                                        ?></p>
                                 </div>
                             </div>
-<!--                            <div class="row">-->
-                                <div class="col-sm-3">
-                                    <p class="mb-0 ml-2">Full Name</p>
+                            <h6>Dati</h6>
+                            <hr class="mt-0 mb-4">
+                            <div class="row pt-1">
+                                <div class="col-6 mb-3">
+                                    <h6>E-pasts</h6>
+                                    <p class="text-muted"><?php
+                                        echo $row['Epasts'];
+                                        ?></p>
                                 </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">Johnatan Smith</p>
-                                </div>
-                            </div>
-                        </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Email</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">example@example.com</p>
+                                <div class="col-6 mb-3">
+                                    <h6>Tel.numurs</h6>
+                                    <p class="text-muted"><?php
+                                        echo $row['Telefons'];
+                                        ?></p>
                                 </div>
                             </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Phone</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">(097) 234-5678</p>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Mobile</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">(098) 765-4321</p>
-                                </div>
-<!--                            </div>-->
-                            <hr>
-<!--                            <div class="flex-grow-1 ms-3">-->
-<!--                                <h3 class="mb-3">STUDENTS</h3>-->
-<!--                                <p class="mb-2 pb-1" style="color: #2b2a2a;">VĀRDS: Jānis Pavārs</p>-->
-<!--                                <p class="mb-2 pb-1" style="color: #2b2a2a;">KVALIFIKĀCIJA: Pavārs</p>-->
-<!--                                <p class="mb-2 pb-1" style="color: #2b2a2a;">KLASE: P-22</p>-->
-<!--                                <p class="mb-2 pb-1" style="color: #2b2a2a;">MĀCĪBU GADS: 2022./23.</p>-->
-<!--                                <div class="d-flex pt-1">-->
-<!--                                    <button type="button" class="btn btn-primary flex-grow-1">Follow</button>-->
-<!--                                </div>-->
-<!--                            </div>-->
+
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="col-auto mx-auto text-center text-muted">Mācību gads: 2022./23.</div>
         </div>
+
     </div>
+</div>
 </body>
 </html>
 <?php
