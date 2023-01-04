@@ -1,14 +1,22 @@
+
 <?php
 session_start();
 include('db_connect.php');
 if(isset($_SESSION['user_role'])){
-    if($_SESSION['user_role']=='student'){
-        include('select_student_data.php');
-    }else{
-        include('select_user_data.php');}
+        include('select_user_data.php');
 }
 if(!isset($_SESSION['user_email'])){
     header('location:login.php');
+}
+$protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+$url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+$url_components = parse_url($url);
+parse_str($url_components['query'], $params);
+
+$query="SELECT * FROM `forum` INNER JOIN `users` ON users.user_ID = forum.creator_id WHERE forum.msg_id='".$params['msg']."';";
+$result = mysqli_query($con, $query);
+if (mysqli_num_rows($result)) {
+    $row3 = mysqli_fetch_array($result);
 }
 ?>
 <!doctype html>
@@ -74,46 +82,33 @@ if(!isset($_SESSION['user_email'])){
     <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col col-lg-12 mb-4 mb-lg-0 ">
             <div class="card mb-3 shadow text-center " style="border-radius: .5rem; background-color: #EDE0D0;">
-                <p class="fs-1 mt-4" style="color:#18130F">PAZIŅOJUMI</p>
-                <?php
-                if ($_SESSION['user_role']!='student'){
-                    echo '<a href="create_post.php"><i class="fa-solid fa-square-plus fa-2xl mt-2" alt="create-post-button" style="color:black"></i></a>
-                ';
-                }
-                ?>
+                <p class="fs-1 mt-4" style="color:#18130F">RAKSTĪT PAZIŅOJUMU</p>
 
-                <?php
-                $query="SELECT * FROM `forum` INNER JOIN `users` ON users.user_ID = forum.creator_id ORDER BY forum.create_date DESC";
-                $result = mysqli_query($con, $query);
-                if (mysqli_num_rows($result)) {
-                    while($row2 = mysqli_fetch_array($result)){
-                        echo '<div class="row g-0  align-items-center  mb-2 ">
-                <div class="col-md-2 text-center  "
-                     style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem; ">
-                    <img src="'.$row2['Tips'].'.png"
-                         alt="Avatar" class="img-fluid mt-2" style="width: 120px; background-color: floralwhite; border-radius: 20px" />
-                    <p style="font-size: 12px;">'.$row2['Vards']." ".$row2['Uzvards'].'</p>
-                </div>
 
-                    <div class="col-md-8 text-lg-start   ">
-                        <div class="m-2 p-2 shadow border-dark" style="background-color: #DAC3A6; border-radius: 5px;"><p style="font-size:18px;">
-                                '.$row2['msg'].'
-                            </p>
-                            <div class="row g-0  align-items-center  mb-2 ">
-                            <div class="col-3 p-0 m-0 text-md-start text-muted">'.$row2['create_date'].'</div>
-                            <div class="col-9 p-0 m-0 text-md-end text-muted"><a href="edit_post.php?msg='.$row2['msg_id'].'"><i class="fa-solid fa-pen-to-square fa-xl" style="color:gray" alt="edit-button"></i></a></div>
-                            </div>
-                    </div>
-                    <div class="col-md-2 text-center  "
+
+                <div class="row g-0  align-items-center  mb-2 ">
+                    <div class="col-md-2 text-center "
                          style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem; ">
+                        <img src="<?php echo $row3['Tips']?>.png"
+                             alt="Avatar" class="img-fluid mt-2" style="width: 120px; background-color: floralwhite; border-radius: 20px" />
+                        <p style="font-size: 12px;"><?php echo $row3['Vards']." ".$row3['Uzvards'] ?></p>
+                    </div>
+                    <div class="col-md-8 text-center">
+                        <form action="edit_post_sql.php?msg=<?php echo $params['msg'];?>" method="post">
+                            <textarea class="form-control mt-0" rows="3" name="msg" maxlength="500"><?php echo $row3['msg'];?></textarea>
+
+                    </div>
                 </div>
-            </div>';
-                    }};
-                ?>
-                <p class="p-0 m-0 text-md-end text-muted border" style="font-size: 14px;"></p></div>
+                <div class="row g-0  align-items-center  mb-4 ">
+                <div class="col-3 m-auto">
+                    <button class="btn" type="submit"><i class="fa-solid fa-trash fa-2xl mt-2 mx-3" alt="create-post-button" style="color:black"></i></button>
+                    <a href="" ><i class="fa-solid fa-square-plus fa-2xl mt-2 mx-3" alt="create-post-button" style="color:black"></i></a>
+                </div>
+                </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 
 </body>
 </html>
